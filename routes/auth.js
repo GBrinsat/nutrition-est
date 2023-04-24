@@ -7,7 +7,7 @@ router.get("/auth/signup", (req, res, next) => {
 });
 
 router.post("/auth/signup", (req, res, next) => {
-  const { username, password } = req.body;
+  const { username, email, password } = req.body;
 
   if (username === "") {
     res.render("signup", { message: "Username cannot be empty" });
@@ -30,9 +30,8 @@ router.post("/auth/signup", (req, res, next) => {
       const hash = bcrypt.hashSync(password, salt);
       console.log(hash);
 
-      User.create({ username: username, password: hash })
+      User.create({ username: username, email: email, password: hash })
         .then((createdUser) => {
-          console.log(createdUser);
           res.redirect("/login");
         })
         .catch((err) => {
