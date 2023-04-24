@@ -1,5 +1,5 @@
 body {
-  padding: 50px;
+  padding: 10px;
   font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
 }
  
@@ -7,6 +7,7 @@ a {
   color: #00b7ff;
   text-decoration: none;
   font-size: 1.5em;
+  
 }
  
 form {
@@ -104,4 +105,30 @@ ul li {
  
 #logout-form button {
   width: 120px;
+}
+
+
+/* additional CSS from Gerrit */
+
+.footer-image {
+  background-image: url("../images/Footer/Logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 150px;
+  height: 40px;
+
+  margin-top: 5px;
+
+}
+
+.bg-green {
+  background-color:#dee2cf;
+}
+
+.header-image {
+  background-image: url("../images/Footer/Logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 180px;
+  height: 45px;
 }
