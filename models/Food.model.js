@@ -7,13 +7,20 @@ const foodSchema = new Schema(
       type: String,
       required: true
     },
-    food: {
-      type: Schema.Types.ObjectId,
-      ref: "Food"
-    }
+    nf_calories: Number,
+    nf_total_fat: Number,
+    nf_saturated_fat: Number,
+    nf_cholesterol: Number,
+    nf_sodium: Number,
+    nf_total_carbohydrate: Number,
+    nf_dietary_fiber: Number,
+    nf_sugars: Number,
+    nf_protein: Number,
+    nf_potassium: Number,
+    img: String
   }
 );
 
-const List = model("List", listSchema);
+const Food = model("Food", foodSchema);
 
-module.exports = List;
+module.exports = Food;

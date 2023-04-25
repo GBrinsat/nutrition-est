@@ -30,7 +30,7 @@ router.post("/auth/signup", (req, res, next) => {
       const hash = bcrypt.hashSync(password, salt);
       console.log(hash);
 
-      User.create({ username: username, firstName: "", lastName: " ", email: email, password: hash, preferences: [] })
+      User.create({ username: username, firstName: "", lastName: " ", email: email, password: hash, preferences: [], lists: [] })
         .then((createdUser) => {
           res.redirect("/login");
         })

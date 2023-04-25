@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const axios = require("axios");
+const User = require("../models/User.model");
 
 router.get("/search/test", (req, res, next) => {
     res.render("testSearch")
@@ -24,10 +25,11 @@ router.get("/search/foodItem", (req, res, next) => {
     
 })
 
-// search for food and get its nutrients (free form text)
+// search for food and get its nutrients (free form text) and calculate for 100grams
 
 router.post("/search/nutrients", (req, res, next) => {
 
+    const user = req.session.user
     const {item} = req.body
     console.log(item)
 
@@ -41,6 +43,7 @@ router.post("/search/nutrients", (req, res, next) => {
     })
         .then(response => {
             console.log(response.data.foods[0])
+            fooditem = response.data.foods[0]
             const nutrientArr = [(response.data.foods[0].nf_calories / response.data.foods[0].serving_weight_grams) * 100, 
                                  (response.data.foods[0].nf_total_fat / response.data.foods[0].serving_weight_grams) * 100,
                                  (response.data.foods[0].nf_saturated_fat / response.data.foods[0].serving_weight_grams) * 100,
@@ -53,7 +56,13 @@ router.post("/search/nutrients", (req, res, next) => {
                                  (response.data.foods[0].nf_potassium / response.data.foods[0].serving_weight_grams) * 100,
                                  (response.data.foods[0].nf_p / response.data.foods[0].serving_weight_grams) * 100]
             roundedNutrients = nutrientArr.map(element => Math.floor(element))
-            res.render("searchOutput", {item : response.data.foods[0], nutrients : roundedNutrients})
+            
+        })
+        .then(() => {
+            User.findById(user._id)
+                .then(response => {
+                    res.render("searchOutput", {item : fooditem, nutrients : roundedNutrients, user: response})
+                })
         })
         .catch(err => {next(err)})
 })

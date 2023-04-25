@@ -41,7 +41,8 @@ const userSchema = new Schema(
       enum: [ "vegetarian", "vegan", "gluten-free", "lactose-intolerant", "paleo", "diabetes", "none" ],
       required: false
     }
-  ]
+  ],
+    lists: []
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`

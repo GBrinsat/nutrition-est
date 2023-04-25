@@ -17,6 +17,18 @@
         <h4>My nutritionest database</h4>
     </div>
 
+{{#each user.lists}}
+    <p>{{listname}}</p>
+    {{#each user.lists.food}}
+        <p>food</p>
+    {{/each}}
+{{/each}}
+
+<form action="/profile/list" method="POST">
+<input type="text" name="listname" placeholder="New List">
+<button type="submit">Create new List</button>
+</form>
+
 </section>
 
 <section class="my-profile mx-2">
