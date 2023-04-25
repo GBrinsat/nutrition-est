@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+/* const { Schema, model } = require("mongoose");
 
 
 const listSchema = new Schema(
@@ -8,13 +8,17 @@ const listSchema = new Schema(
       trim: true,
       default: "My List",
     },
-    food: {
+    food: [
+      
+      {
       type: Schema.Types.ObjectId,
       ref: "Food"
-    }
+      }
+    ]
   }
 );
 
 const List = model("List", listSchema);
 
 module.exports = List;
+ */

@@ -1,1 +1,15 @@
 <h1>Hello {{user.username}}</h1>
+
+<h3>My nutritionest database</h3>
+
+{{#each user.lists}}
+    <p>{{listname}}</p>
+    {{#each user.lists.food}}
+        <p>food</p>
+    {{/each}}
+{{/each}}
+
+<form action="/profile/list" method="POST">
+<input type="text" name="listname" placeholder="New List">
+<button type="submit">Create new List</button>
+</form>

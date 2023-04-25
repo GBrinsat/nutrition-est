@@ -19,6 +19,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    lists: []
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
