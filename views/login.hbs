@@ -1,14 +1,29 @@
-<h1>Login</h1>
-<form action="/login" method="POST">
-  <label for="username">Username: </label>
-  <input type="text" name="username">
-
-  <label for="password">Password: </label>
-  <input type="password" name="password">
-
-  <button type="submit">Log in</button>
-</form>
-
-{{#if message}}
-  <h3 class="error">{{message}}</h3>
-{{/if}}
+<div class="signup-container">
+  <div class="col-12 text-center margin-top">
+    <h5>Hi there!</h5>
+    <h1>Please, log in</h1>
+  </div>
+  <form action="/login" method="POST">
+    <div class="col-9 mx-auto">
+      {{#if message}}
+     <h3 class="error-message rounded-4">{{message}}</h3>
+    {{/if}}
+    </div>
+    <div class="mb-3 col-9 mx-auto ">
+      <input type="text" class="form-control form-height border-success rounded-4" name="username" placeholder="Username">
+    </div>
+    <div class="mb-3 col-9 mx-auto">
+      <input type="password" class="form-control form-height border-success rounded-4" name="password" placeholder="******">
+    </div>
+    <br>
+    <div class="d-grid gap-2 col-9 mx-auto">
+      <button class="btn-green rounded-4" type="submit">Log in</button>
+    </div>
+    <br>
+    <p class="mb-3 col-9 mx-auto text-center orText"><span class="strike">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;OR&nbsp;&nbsp;<span class="strike">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+    <br>
+    <div class="d-grid gap-2 col-9 mx-auto">
+      <a href="/auth/signup"><button class="btn-lightgreen rounded-4" type="button">Create an account</button></a>
+    </div>
+  </form>
+</div>

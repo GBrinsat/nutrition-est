@@ -9,6 +9,29 @@ a {
   font-size: 1.5em;
   
 }
+
+.error-message{
+    background-color: #82B981;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    height: 50px;
+    text-transform: none;
+    padding: 17px;
+    margin: 0px 0px 30px 0px;
+}
+
+.signup-container > div > h1 {
+  font-size: 35px;
+  color: #2D2D2D;
+}
+
+.signup-container > div > h5 {
+  font-size: 20px;
+  color: #2D2D2D;
+}
+
+/*  */
  
 form {
   margin: 30px auto;
@@ -131,4 +154,58 @@ ul li {
   background-repeat: no-repeat;
   width: 180px;
   height: 45px;
+}
+
+/* Sign up and Log in CSS */
+
+.margin-top{
+  margin: 75px 0px 75px 0px
+}
+
+.form-height {
+  height: 50px;
+}
+
+::-webkit-input-placeholder {
+  text-align: center;
+}
+
+:-moz-placeholder {
+  text-align: center;
+}
+
+.btn-green {
+  background-color: #048A38;
+  color: white;
+  border: 1px solid #048A38;
+  height: 50px;
+  text-transform: none;
+}
+
+.btn-green:hover {
+  background-color: #048A38;
+  color: white;
+  border: 1px solid #048A38;
+}
+
+.orText {
+  font-size: 12px;
+}
+
+.strike {
+  text-decoration: line-through;
+}
+
+.btn-lightgreen {
+  background-color: #82B981;
+  color: white;
+  border: 1px solid #82B981;
+  height: 50px;
+  text-transform: none;
+}
+
+.btn-lightgreen:hover {
+  background-color: #82B981;
+  color: white;
+  border: 1px solid #82B981;
 }

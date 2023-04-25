@@ -15,12 +15,11 @@ router.post("/auth/signup", (req, res, next) => {
   }
 
   if (password.length < 4) {
-    res.render("signup", { message: "Password must be 4 or more characters" });
+    res.render("signup", { message: "Password is too short" });
     return;
   }
 
   User.findOne({ username }).then((userFromDB) => {
-    console.log(userFromDB);
     if (userFromDB !== null) {
       res.render("signup", { message: "Username is already taken" });
     } else {
