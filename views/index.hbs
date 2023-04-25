@@ -1,8 +1,31 @@
-<h1>{{appTitle}}</h1>
-<p>Welcome to {{appTitle}}</p>
+{{!-- Intro image + search bar --}}
 
-<a href="/auth/signup">Sign up</a>
-<a href="/login">Log in</a>
-<a href="/profile">Profile</a>
+<section>
+    <form>
+    <div class="d-grid gap-2 col-9 mx-auto">
+      <a href="/search/test"><button class="btn-white rounded-4" type="button"><h5>🔍&nbsp;&nbsp;Search for products</h5></button></a>
+    </div>
+    </form>
+</section>
 
-<a href="/search/test">To the test-search</a>
+{{!-- About nutritionist --}}
+
+<section class="home-articles">
+    <div class="gap-2 col-md-4 col-sm-12">
+        <h1>Healthy living.</h1>
+        <h1>Simplified.</h1>
+        <img src="/images/index/healthy-food.png" alt="Food database" class="home-articles-img">
+        <p>Our database contains millions of food items containing detailed nutritional information, such as calories, fat, carbs and protein.</p>
+        <p>Simply search and we’ll calculate everything correctly for you.</p>
+    </div>
+</section>
+
+{{!-- Sign up button --}}
+
+<section class="home-signup">
+    <form>
+    <div class="d-grid gap-2 col-6 mx-auto">
+      <a href="/auth/signup"><button class="btn-green rounded-4" type="button">Sign up now</button></a>
+    </div>
+    </form>
+</section>

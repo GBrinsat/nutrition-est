@@ -1,5 +1,5 @@
 body {
-  padding: 10px;
+  /* padding: 10px; */
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
   font-weight: 300;
   font-size: 14px;
@@ -29,7 +29,7 @@ a {
 }
 
 .signup-container > div > h5 {
-  font-size: 20px;
+  font-size: 15px;
   color: #2D2D2D;
 }
 
@@ -141,7 +141,6 @@ ul li {
   background-repeat: no-repeat;
   width: 150px;
   height: 40px;
-
   margin-top: 5px;
 
 }
@@ -171,10 +170,33 @@ ul li {
   color: #2d2d2d;
 }
 
+/* Home */
+
+.home-articles {
+  background-color: #dee2cf;
+  padding: 20px;
+  margin: 0;
+}
+
+.home-articles-img {
+  width: 175px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.btn-white {
+  background-color: white;
+  color: #2d2d2d;
+  border: 2px solid #048A38;
+  height: 60px;
+  text-transform: none;
+  padding: 17px;
+}
+
 /* Sign up and Log in CSS */
 
 .margin-top{
-  margin: 75px 0px 75px 0px
+  margin: 10px 0px 50px 0px
 }
 
 .form-height {
@@ -195,6 +217,10 @@ ul li {
   border: 1px solid #048A38;
   height: 50px;
   text-transform: none;
+}
+
+.btn-green > h5 {
+  padding: 4px;
 }
 
 .btn-green:hover {
