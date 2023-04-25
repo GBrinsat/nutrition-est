@@ -32,10 +32,10 @@
                 <p>Password</p>                
 			</div>
 			<div class="col-6">
-				<p>{{user.name}}</p>
-				<p>last name</p>
-                <p>email</p>
-                <p>******</p>   
+				<p>{{#if user.firstName}}{{user.firstName}}{{else}}-{{/if}}</p>
+				<p>{{#if user.lastName}}{{user.lastName}}{{else}}-{{/if}}</p>
+        <p>{{user.email}}</p>
+        <p>******</p>   
 			</div>
 		</div>
 	  </div>

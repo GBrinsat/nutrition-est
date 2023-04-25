@@ -8,6 +8,16 @@ const userSchema = new Schema(
       required: true,
       unique: true,
     },
+    firstName: {
+      type: String,
+      trim: true,
+      required: false,
+    },
+    lastName: {
+      type: String,
+      trim: true,
+      required: false,
+    },
     email: {
       type: String,
       required: true,
@@ -19,6 +29,19 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    role: {
+      type: String,
+      enum: ["user", "admin"],
+      default: "user",
+      required: false
+    },
+    preferences: [
+      {
+      type: String,
+      enum: [ "vegetarian", "vegan", "gluten-free", "lactose-intolerant", "paleo", "diabetes", "none" ],
+      required: false
+    }
+  ]
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
