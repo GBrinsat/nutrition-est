@@ -11,43 +11,24 @@
    </head>
 
    <body>
+
       <header>
-         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown link
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-    </ul>
-  </div>
-</nav>
-       {{!--   <nav class="navbar navbar-expand row my-3 mx-1 bg-green rounded-4">
-            <div class="row d-flex align-items-center justify-content-between">
-               <a class="mx-2 mb-1 col-8 header-image" href="/"></a>
-               <p class="mb-1 col-4">test</p>
+         <nav class="navbar navbar-expand-md bg-green rounded-4 mt-2 mx-2 fixed-top">
+            <a class="header-image mx-4 mt-1" href="/"></a>
+               <button class="navbar-toggler mx-4 bg-white rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false">
+                  <span class="navbar-toggler-icon"></span>
+               </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+               <div class="navbar-nav">
+               <a class="nav-item mx-4 header-links" href="/search/test">Search</a>
+               <a class="nav-item mx-4 header-links" href="/login">Signup / Log in</a>
+               <a class="nav-item mx-4 header-links" href="/profile">Profile</a>
+               </div>
             </div>
-         </nav> --}}
+         </nav>
       </header>
+
+      <div class="topbox"></div>
 
       {{{body}}}
 

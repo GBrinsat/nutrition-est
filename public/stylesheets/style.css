@@ -1,6 +1,8 @@
 body {
   padding: 10px;
-  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 300;
+  font-size: 14px;
 }
  
 a {
@@ -108,7 +110,7 @@ ul li {
 }
 
 
-/* additional CSS from Gerrit */
+/* Footer */
 
 .footer-image {
   background-image: url("../images/Footer/Logo.png");
@@ -121,6 +123,8 @@ ul li {
 
 }
 
+/* Header */
+
 .bg-green {
   background-color:#dee2cf;
 }
@@ -131,4 +135,15 @@ ul li {
   background-repeat: no-repeat;
   width: 180px;
   height: 45px;
+}
+
+.topbox {
+  height: 120px;
+}
+
+.header-links {
+  font-size: 18px;
+  line-height: 35px;
+  text-decoration: none;
+  color: #2d2d2d;
 }
