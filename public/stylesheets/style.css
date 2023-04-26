@@ -90,6 +90,7 @@ form button:hover {
 
 thead, td {
   text-align: left;
+  padding-right: 15px;
 }
  
 ul {
