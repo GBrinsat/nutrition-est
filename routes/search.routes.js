@@ -10,7 +10,6 @@ router.get("/search", (req, res, next) => {
 // search for specific food names:
 
 router.get("/search/foodItem", (req, res, next) => {
-
     item = req.query.item
 
     axios({
@@ -23,7 +22,7 @@ router.get("/search/foodItem", (req, res, next) => {
             foodArr = response.data.common
             //console.log(foodArr)
             console.log(foodArr[0].full_nutrients)
-            res.render("searchOutput", {items : foodArr})})
+            res.render("search", {items : foodArr})})
         .catch(err => {next(err)})
     
 })
