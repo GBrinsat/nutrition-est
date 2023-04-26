@@ -49,71 +49,31 @@ router.post("/search/nutrients", (req, res, next) => {
       "x-remote-user-id": "0",
     },
   })
-    .then((response) => {
-      console.log(response.data.foods[0]);
-      fooditem = response.data.foods[0];
-      const nutrientArr = [
-        (response.data.foods[0].nf_calories /
-          response.data.foods[0].serving_weight_grams) *
-          100,
-        (response.data.foods[0].nf_total_fat /
-          response.data.foods[0].serving_weight_grams) *
-          100,
-        (response.data.foods[0].nf_saturated_fat /
-          response.data.foods[0].serving_weight_grams) *
-          100,
-        (response.data.foods[0].nf_cholesterol /
-          response.data.foods[0].serving_weight_grams) *
-          100,
-        (response.data.foods[0].nf_sodium /
-          response.data.foods[0].serving_weight_grams) *
-          100,
-        (response.data.foods[0].nf_total_carbohydrate /
-          response.data.foods[0].serving_weight_grams) *
-          100,
-        (response.data.foods[0].nf_dietary_fiber /
-          response.data.foods[0].serving_weight_grams) *
-          100,
-        (response.data.foods[0].nf_sugars /
-          response.data.foods[0].serving_weight_grams) *
-          100,
-        (response.data.foods[0].nf_protein /
-          response.data.foods[0].serving_weight_grams) *
-          100,
-        (response.data.foods[0].nf_potassium /
-          response.data.foods[0].serving_weight_grams) *
-          100,
-        (response.data.foods[0].nf_p /
-          response.data.foods[0].serving_weight_grams) *
-          100,
-      ];
-      roundedNutrients = nutrientArr.map((element) => Math.floor(element));
-    })
         .then(response => {
             food = null
             nutrientsArr = []
             food = response.data.foods
-            //console.log(response.data.foods[0])
-            //for(let i = 0; i < 20; i++){
-/*             const nutrients =   [(response.data.foods[i].nf_calories / response.data.foods[i].serving_weight_grams) * 100, 
-                                 (response.data.foods[i].nf_total_fat / response.data.foods[i].serving_weight_grams) * 100,
-                                 (response.data.foods[i].nf_saturated_fat / response.data.foods[i].serving_weight_grams) * 100,
-                                 (response.data.foods[i].nf_cholesterol / response.data.foods[i].serving_weight_grams) * 100,
-                                 (response.data.foods[i].nf_sodium / response.data.foods[i].serving_weight_grams) * 100,
-                                 (response.data.foods[i].nf_total_carbohydrate / response.data.foods[i].serving_weight_grams) * 100,
-                                 (response.data.foods[i].nf_dietary_fiber / response.data.foods[i].serving_weight_grams) * 100,
-                                 (response.data.foods[i].nf_sugars / response.data.foods[i].serving_weight_grams) * 100,
-                                 (response.data.foods[i].nf_protein / response.data.foods[i].serving_weight_grams) * 100,
-                                 (response.data.foods[i].nf_potassium / response.data.foods[i].serving_weight_grams) * 100,
-                                 (response.data.foods[i].nf_p / response.data.foods[i].serving_weight_grams) * 100] */
-            //roundedNutrients = nutrientArr.map(element => Math.floor(element))
-            //}
+            console.log(response.data.foods[0])
+
+            const nutrients =   [(response.data.foods[0].nf_calories / response.data.foods[0].serving_weight_grams) * 100, 
+                                 (response.data.foods[0].nf_total_fat / response.data.foods[0].serving_weight_grams) * 100,
+                                 (response.data.foods[0].nf_saturated_fat / response.data.foods[0].serving_weight_grams) * 100,
+                                 (response.data.foods[0].nf_cholesterol / response.data.foods[0].serving_weight_grams) * 100,
+                                 (response.data.foods[0].nf_sodium / response.data.foods[0].serving_weight_grams) * 100,
+                                 (response.data.foods[0].nf_total_carbohydrate / response.data.foods[0].serving_weight_grams) * 100,
+                                 (response.data.foods[0].nf_dietary_fiber / response.data.foods[0].serving_weight_grams) * 100,
+                                 (response.data.foods[0].nf_sugars / response.data.foods[0].serving_weight_grams) * 100,
+                                 (response.data.foods[0].nf_protein / response.data.foods[0].serving_weight_grams) * 100,
+                                 (response.data.foods[0].nf_potassium / response.data.foods[0].serving_weight_grams) * 100,
+                                 (response.data.foods[0].nf_p / response.data.foods[0].serving_weight_grams) * 100]
+            roundedNutrients = nutrientsArr.map(element => Math.floor(element))
+            // console.log(roundedNutrients[0])
             
         })
         .then(() => {
             User.findById(user._id) 
                 .then(response => {
-                    console.log(food)
+                    //console.log(food)
                     res.render("searchOutput", {items : food, user: response})
                 })
         })
