@@ -24,10 +24,15 @@ router.get("/search/foodItem", (req, res, next) => {
       console.log(foodArr[0].full_nutrients);
       res.render("searchOutput", { items: foodArr });
     })
-    .catch((err) => {
-      next(err);
-    });
-});
+        .then(response => {
+            let foodArr = []
+            foodArr = response.data.common
+            //console.log(foodArr)
+            console.log(foodArr[0].full_nutrients)
+            res.render("search", {items : foodArr})})
+        .catch(err => {next(err)})
+    
+})
 
 // search for food and get its nutrients (free form text) and calculate for 100grams
 

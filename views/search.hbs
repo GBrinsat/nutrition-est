@@ -1,23 +1,34 @@
-
-<h3 class="text-center">What are you looking for today?</h3>
+<div class="signup-container">
+  <div class="col-12 text-center margin-top">
+    <h5>Please tell us,</h5>
+    <h1>What are you looking for today?</h1>
 
 <form action="/search/foodItem" method="GET">
     <div class="mb-3 col-9 mx-auto ">
-      <input type="text" class="form-control form-height border-success rounded-4" name="item" placeholder=".....">
+      <input type="text" class="form-control form-height border-success rounded-4" name="item" placeholder="...">
     </div>
-    <br>
     <div class="d-grid gap-2 col-9 mx-auto">
       <button class="btn-green rounded-4" type="submit">🔍&nbsp;&nbsp;Search for products</button>
     </div>
   </form>
+</div>
 
-
-{{!-- <form action="/search/nutrients" method="POST">
-    <div class="mb-3 col-9 mx-auto ">
-      <input type="text" class="form-control form-height border-success rounded-4" name="item" placeholder=".....">
-    </div>
+{{#if items}}
+  <div class="col-9 mx-auto text-center">
+    <h2>This is what we found...</h2>
     <br>
-    <div class="d-grid gap-2 col-9 mx-auto">
-      <button class="btn-green rounded-4" type="submit">🔍&nbsp;&nbsp;Search for products</button>
+  </div>
+{{#each items}}
+    <form action="/search/nutrients" method="POST" class="m-0 mx-auto">
+    <input type="hidden" name="item" value="{{this.food_name}}">
+    <div class="col-10 m-0 mx-auto">
+      <a href="#" onclick="this.parentNode.submit()"></a><button class="foodItem m-0 rounded-4" type="submit"><span class="listNumber rounded-5"><span>{{math @index "+" 1}}</span></span>{{this.food_name}}<span class="listArrow"><img src="/images/ArrowRight.png" alt="Arrow Right" height="12px"></span></button></a>
     </div>
-  </form> --}}
+    </form>
+{{/each}}
+
+{{!-- {{#each nutrients}}
+    <p>{{this}}</p>
+{{/each}} --}}
+{{/if}}
+</div>
