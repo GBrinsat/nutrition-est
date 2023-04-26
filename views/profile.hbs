@@ -1,7 +1,7 @@
 <div class="signup-container">
   <div class="col-12 text-center margin-top">
     <h5>Welcome back!</h5>
-    <h1>{{user.name}}</h1>
+    <h1>{{#if user.firstname}}{{user.firstname}}{{else}}{{user.username}}{{/if}}</h1>
   </div>
   <div>
     <form>
@@ -11,6 +11,8 @@
     </form>
   </div>
 </div>
+
+{{!-- My nutritionest lists --}}
 
 <section class="my-lists mx-2">
     <div>
@@ -31,6 +33,8 @@
 
 </section>
 
+{{!-- My profile info and edit --}}
+
 <section class="my-profile mx-2">
     <div>
         <h4>My profile</h4>
@@ -40,15 +44,76 @@
 			<div class="col-6">
 				<p>Name</p>
 				<p>Last name</p>
-                <p>Email address</p>
-                <p>Password</p>                
+        <p>Email address</p>
+        <p>Password</p>   
+        <p>My preferences:</p>             
 			</div>
 			<div class="col-6">
-				<p>{{#if user.firstName}}{{user.firstName}}{{else}}-{{/if}}</p>
-				<p>{{#if user.lastName}}{{user.lastName}}{{else}}-{{/if}}</p>
+				<p>{{#if user.firstname}}{{user.firstname}}{{else}}-{{/if}}</p>
+				<p>{{#if user.lastname}}{{user.lastname}}{{else}}-{{/if}}</p>
         <p>{{user.email}}</p>
         <p>******</p>   
+        {{#if user.preferences}}
+          <div class="d-inline-flex flex-wrap">
+          {{#each user.preferences}}
+          <p class="pill-green rounded-4">{{this}}</p>
+          {{/each}}
+          </div>
+        {{else}}
+          <p>No preferences set</p>
+        {{/if}}
 			</div>
 		</div>
+    <!-- Button trigger modal -->
+      <button type="button" class="btn-green rounded-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Edit profile
+      </button>
 	  </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <div class="modal-dialog">
+       <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit profile</h1>
+           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+         </div>
+         <div class="modal-body">
+
+          <form action="/profile" method="POST">
+            <div class="col-9 mx-auto">
+            {{#if message}}
+              <h3 class="error-message rounded-4">{{message}}</h3>
+            {{/if}}
+            </div>
+            <div class="mb-3 col-9 mx-auto ">
+              <input type="text" class="form-control form-height border-success rounded-4" name="firstname" placeholder="First name" value="{{user.firstname}}">
+            </div>
+            <div class="mb-3 col-9 mx-auto ">
+              <input type="text" class="form-control form-height border-success rounded-4" name="lastname" placeholder="Last name" value="{{user.lastname}}">
+            </div>
+            <div class="mb-3 col-9 mx-auto ">
+              <input type="text" class="form-control form-height border-success rounded-4" name="email" placeholder="Email address" value="{{user.email}}">
+            </div>
+            <div class="mb-3 col-9 mx-auto">
+              <input type="password" class="form-control form-height border-success rounded-4" name="password" placeholder="******" minlength="4">
+            </div>
+            <div class="mb-3 col-9 mx-auto">
+              <select class="form-control form-height border-success rounded-4 select-sizer" name="preferences" multiple>
+                <option value="vegetarian">Vegetarian</option>
+                <option value="vegan">Vegan</option>
+                <option value="gluten-free">Gluten-free</option>
+                <option value="lactose-intolerant">Lactose-intolerant</option>    
+                <option value="paleo">Paleo</option>
+                <option value="diabetes">Diabetes</option>                     
+              </select>
+            </div>
+         </div>
+         <div class="modal-footer">
+           <button type="button" class="btn-lightgreen rounded-4" data-bs-dismiss="modal">Close</button>
+           <button type="submit" class="btn-green rounded-4">Save changes</button>
+         </div>
+         </form>
+       </div>
+     </div>
+    </div>
 </section>

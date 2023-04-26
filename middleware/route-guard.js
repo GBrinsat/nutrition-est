@@ -1,7 +1,7 @@
 function isNotLoggedIn(req, res, next) {
     // Check if user is logged in
     if (!req.session.user) {
-        return res.redirect("auth/login")
+        return res.redirect("/login")
     } 
 
     next()
@@ -10,7 +10,7 @@ function isNotLoggedIn(req, res, next) {
 function isLoggedIn(req, res, next) {
     // Check if user is logged in
     if (req.session.user) {
-        return res.redirect("profile")
+        return res.redirect("/profile")
     } 
     
     next()

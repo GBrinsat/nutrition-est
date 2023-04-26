@@ -1,4 +1,4 @@
-body {
+* {
   /* padding: 10px; */
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
   font-weight: 300;
@@ -249,4 +249,21 @@ ul li {
   background-color: #82B981;
   color: white;
   border: 1px solid #82B981;
+}
+
+/* Profile */
+
+.pill-green {
+  background-color: white;
+  color: black;
+  border: 1px solid #048A38;
+  text-transform: uppercase;
+  font-size: 12px;
+  width: fit-content;
+  padding: 5px 10px;
+  margin-right: 10px;
+}
+
+.select-sizer {
+  height: 125px;
 }
