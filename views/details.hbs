@@ -54,3 +54,16 @@
 
   </div>
 </div>
+
+{{!-- Dropdown for adding food to List --}}
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Add to list
+  </button>
+  <ul class="dropdown-menu">
+    {{#each user.lists}}
+    <li><a class="dropdown-item bg-white" href="/profile/add-item">{{listname}}</a></li>
+    {{/each}}
+  </ul>
+</div>
