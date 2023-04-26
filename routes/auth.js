@@ -4,7 +4,8 @@ const bcrypt = require("bcryptjs");
 const { isLoggedIn } = require("../middleware/route-guard");
 
 router.get("/auth/signup", (req, res, next) => {
-  res.render("signup");
+  const user = req.session.user
+  res.render("signup", { user });
 });
 
 router.post("/auth/signup", (req, res, next) => {
@@ -41,7 +42,8 @@ router.post("/auth/signup", (req, res, next) => {
 });
 
 router.get("/login", isLoggedIn, (req, res, next) => {
-  res.render("login");
+  const user = req.session.user
+  res.render("login", { user });
 });
 
 router.post("/login", (req, res, next) => {

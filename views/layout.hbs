@@ -21,10 +21,13 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                <div class="navbar-nav">
                <a class="nav-item mx-4 header-links" href="/search">Search</a>
+               {{#if user}}
+               <a class="nav-item mx-4 header-links" href="/profile">My account</a>
+               <a class="nav-item mx-4 header-links" href="/auth/logout">Log out</a>
+               {{else}}
                <a class="nav-item mx-4 header-links" href="/auth/signup">Sign up</a>
                <a class="nav-item mx-4 header-links" href="/login">Log in</a>
-               <a class="nav-item mx-4 header-links" href="/auth/logout">Log out</a>
-               <a class="nav-item mx-4 header-links" href="/profile">My account</a>
+               {{/if}}
                </div>
             </div>
          </nav>

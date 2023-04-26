@@ -176,6 +176,15 @@ ul li {
 
 /* Home */
 
+.home-signup {
+  background-image: url("/images/Backgrounds/bg-home-2.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 0;
+  padding-bottom: 45%;
+}
+
 .home-articles {
   background-color: #dee2cf;
   padding: 20px;

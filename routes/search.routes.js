@@ -4,7 +4,8 @@ const axios = require("axios");
 const User = require("../models/User.model");
 
 router.get("/search", (req, res, next) => {
-  res.render("search");
+  const user = req.session.user
+  res.render("search", { user });
 });
 
 // search for specific food names:
