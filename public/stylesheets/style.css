@@ -278,3 +278,13 @@ ul li {
 .select-sizer {
   height: 125px;
 }
+
+/* Details - dropdown button */
+
+.form-item {
+  margin: 0;
+}
+
+.dropdown-button {
+  margin: 0;
+}

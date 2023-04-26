@@ -22,7 +22,6 @@ router.get("/search/foodItem", (req, res, next) => {
             let foodArr = []
             foodArr = response.data.common
             //console.log(foodArr)
-            console.log(foodArr[0].full_nutrients)
             res.render("searchOutput", {items : foodArr})})
         .catch(err => {next(err)})
     
@@ -53,7 +52,7 @@ router.post("/search/nutrients", (req, res, next) => {
             food = null
             nutrientsArr = []
             food = response.data.foods
-            console.log(response.data.foods[0].food_name, response.data.foods[0].nf_total_fat)
+            //console.log(response.data.foods[0].food_name, response.data.foods[0].nf_total_fat)
  
 const nutrients = [              (response.data.foods[0].nf_calories / response.data.foods[0].serving_weight_grams) * 100, 
                                  (response.data.foods[0].nf_total_fat / response.data.foods[0].serving_weight_grams) * 100,
@@ -67,13 +66,12 @@ const nutrients = [              (response.data.foods[0].nf_calories / response.
                                  (response.data.foods[0].nf_potassium / response.data.foods[0].serving_weight_grams) * 100,]
                                 //  (response.data.foods[0].nf_p / response.data.foods[0].serving_weight_grams) * 100]
             roundedNutrients = nutrients.map(element => element.toFixed(2))
-            console.log(roundedNutrients)
 
         })
         .then(() => {
             User.findById(user._id) 
                 .then(response => {
-                    //console.log(food)
+                    console.log(food)
                     res.render("details", {items : food, user: response, nutrients : roundedNutrients})
                 })
         })

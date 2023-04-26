@@ -35,8 +35,8 @@ router.get("/profile/list-delete", (req, res, next) => {
   document.querySelector("");
 });
 
-router.get("/profile/add-item", (req, res, next) => {
-  const { food_name } = req.body;
+router.post("/profile/add-item", (req, res, next) => {
+  const { item, lists } = req.body;
   console.log("test starts here");
   console.log(req.body);
   res.redirect("/profile");

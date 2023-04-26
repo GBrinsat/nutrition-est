@@ -57,13 +57,65 @@
 
 {{!-- Dropdown for adding food to List --}}
 
-<div class="dropdown">
+
+ <!-- Button trigger modal -->
+      <button type="button" class="pill-lightgreen rounded-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Add to list
+      </button>
+	  
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <div class="modal-dialog">
+       <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Choose list</h1>
+           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+         </div>
+         <div class="modal-body">
+
+          <form action="/profile/add-item" method="POST">
+            <div class="col-9 mx-auto">
+            {{#if message}}
+              <h3 class="error-message rounded-4">{{message}}</h3>
+            {{/if}}
+            </div>
+            <div class="mb-1 col-9 mx-auto">
+              <select class="form-control form-height border-success rounded-4 select-sizer" name="lists" multiple>
+                {{#each user.lists}}
+                   <option value="{{listname}}">{{listname}}</option>
+                {{/each}}                  
+              </select>
+            </div>
+         </div>
+         <input type="hidden" name="item" value="{{item}}">
+         <div class="modal-footer">
+           <button type="button" class="btn-lightgreen rounded-4" data-bs-dismiss="modal">Close</button>
+           <button type="submit" class="btn-green rounded-4">Add to list</button>
+         </div>
+         </form>
+       </div>
+     </div>
+    </div>
+
+
+
+{{!-- <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     Add to list
   </button>
   <ul class="dropdown-menu">
     {{#each user.lists}}
-    <li><a class="dropdown-item bg-white" href="/profile/add-item">{{listname}}</a></li>
+    
+    <li>
+    <form class="form-item" action="/profile/add-item" method="POST">
+      <button class="dropdown-item bg-white dropdown-button" type="submit">{{listname}}</button>
+    </form>
+    </li>
+
+    <form class="" action="/profile/add-item" method="POST">
+    <input type="hidden" name="item" value="{{listname}}">
+    <a class="dropdown-item bg-white" href="#" onclick="this.parentNode.submit()">{{listname}}</a>
+    </form>
     {{/each}}
   </ul>
-</div>
+</div> --}}
