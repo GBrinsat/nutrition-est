@@ -264,6 +264,17 @@ ul li {
   margin-right: 10px;
 }
 
+.pill-lightgreen {
+  background-color: #82B981;
+  color: white;
+  border: 1px solid #82B981;
+  text-transform: uppercase;
+  font-size: 12px;
+  width: fit-content;
+  padding: 5px 10px;
+  margin-right: 10px;
+}
+
 .select-sizer {
   height: 125px;
 }
