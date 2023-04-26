@@ -26,6 +26,7 @@ router.get("/profile/list-delete", (req, res, next) => {
 })
 
 router.get("/profile/add-item", (req, res, next) => {
+    const {food_name} = req.body
     console.log("test starts here")
     console.log(req.body)
     res.redirect("/profile")
