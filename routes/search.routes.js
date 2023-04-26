@@ -15,23 +15,15 @@ router.get("/search/foodItem", (req, res, next) => {
   axios({
     method: "get",
     url: `https://trackapi.nutritionix.com/v2/search/instant?query=${item}&detailed=true`,
-    headers: { "x-app-id": "f5eefce0", "x-app-key": "4bd59f1a91c918be3c885f59ed157eec", "x-remote-user-id": "0" },
+    headers: { "x-app-id": "03a05987", "x-app-key": "ac76ba904fc2089a5f7573a5f74ba3ef", "x-remote-user-id": "0" },
   })
     .then((response) => {
       let foodArr = [];
       foodArr = response.data.common;
       //console.log(foodArr)
       console.log(foodArr[0].full_nutrients);
-      res.render("searchOutput", { items: foodArr });
+      res.render("search", { items: foodArr });
     })
-        .then(response => {
-            let foodArr = []
-            foodArr = response.data.common
-            //console.log(foodArr)
-            console.log(foodArr[0].full_nutrients)
-            res.render("search", {items : foodArr})})
-        .catch(err => {next(err)})
-    
 })
 
 // search for food and get its nutrients (free form text) and calculate for 100grams
@@ -49,8 +41,8 @@ router.post("/search/nutrients", (req, res, next) => {
       query: `${item}`,
     },
     headers: {
-      "x-app-id": "f5eefce0",
-      "x-app-key": "4bd59f1a91c918be3c885f59ed157eec",
+      "x-app-id": "03a05987",
+      "x-app-key": "ac76ba904fc2089a5f7573a5f74ba3ef",
       "x-remote-user-id": "0",
     },
   })
