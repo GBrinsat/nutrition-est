@@ -2,13 +2,12 @@
 
 <div class="details-container">
   <div class="col-12 text-center margin-top">
-    <h5>nutrition information for:</h5>
-    <h1>{{item.food_name}}</h1>
+    <h5>nutrition information for 100g of:</h5>
+    <h2>{{foodName}}</h2>
+    <br />
+    <img width="120px" src={{foodPhoto}} alt="{{foodName}}">
       <table class="nutrients-table mx-auto">
-        <tr>
-          <th>Nutrient</th>
-          <th>per 100g</th>
-        </tr>
+       
         <tr>
           <td>Energy</td>
           <td>{{nutrients.[0]}} kcal</td>
