@@ -8,12 +8,12 @@ const userSchema = new Schema(
       required: true,
       unique: true,
     },
-    firstName: {
+    firstname: {
       type: String,
       trim: true,
       required: false,
     },
-    lastName: {
+    lastname: {
       type: String,
       trim: true,
       required: false,
