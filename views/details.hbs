@@ -4,57 +4,66 @@
   <div class="col-12 text-center margin-top">
     <h5>nutrition information for:</h5>
     <h1>{{item.food_name}}</h1>
-      <table class="nutrients-table">
+      <table class="nutrients-table mx-auto">
         <tr>
           <th>Nutrient</th>
           <th>per 100g</th>
         </tr>
         <tr>
           <td>Energy</td>
-          <td>{{nutrients.foods[0].nf_calories}} kcal</td>
+          <td>{{nutrients.[0]}} kcal</td>
         </tr>
         <tr>
           <td>Fat</td>
-          <td>{{nutrients.foods[0].nf_total_fat}} g</td>
+          <td>{{nutrients.[1]}} g</td>
         </tr>
         <tr>
           <td>Saturated Fat</td>
-          <td>{{nutrients.foods[0].nf_saturated_fat}} g</td>
+          <td>{{nutrients.[2]}} g</td>
         </tr>
         <tr>
           <td>Cholesterol</td>
-          <td>{{nutrients.foods[0].nf_cholesterol}} g</td>
+          <td>{{nutrients.[3]}} mg</td>
         </tr>
         <tr>
           <td>Sodium</td>
-          <td>{{nutrients.foods[0].nf_sodium}} g</td>
+          <td>{{nutrients.[4]}} mg</td>
         </tr>
         <tr>
           <td>Carbohydrates</td>
-          <td>{{nutrients.foods[0].nf_total_carbohydrate}} g</td>
+          <td>{{nutrients.[5]}} g</td>
         </tr>
         <tr>
           <td>Sugar</td>
-          <td>{{nutrients.foods[0].nf_sugars}} g</td>
+          <td>{{nutrients.[6]}} g</td>
         </tr>
         <tr>
           <td>Fiber</td>
-          <td>{{nutrients.foods[0].nf_dietary_fiber}} g</td>
+          <td>{{nutrients.[7]}} g</td>
         </tr>        
         <tr>
           <td>Protein</td>
-          <td>{{nutrients.foods[0].nf_saturated_fat}} g</td>
+          <td>{{nutrients.[8]}} g</td>
         </tr> 
          <tr>
           <td>Potassium</td>
-          <td>{{nutrients.foods[0].nf_potassium}} g</td>
+          <td>{{nutrients.[9]}} mg</td>
         </tr> 
-        <tr>
-          <td>Flavonoids (P)</td>
-          <td>{{nutrients.foods[0].nf_p}} g</td>
-        </tr>
 
       </table>
 
   </div>
+</div>
+
+{{!-- Dropdown for adding food to List --}}
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Add to list
+  </button>
+  <ul class="dropdown-menu">
+    {{#each user.lists}}
+    <li><a class="dropdown-item bg-white" href="/profile/add-item">{{listname}}</a></li>
+    {{/each}}
+  </ul>
 </div>
