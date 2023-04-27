@@ -4,7 +4,7 @@ const axios = require("axios");
 const User = require("../models/User.model");
 
 router.get("/search", (req, res, next) => {
-  const user = req.session.user
+  const user = req.session.user;
   res.render("search", { user });
 });
 
@@ -17,15 +17,14 @@ router.get("/search/foodItem", (req, res, next) => {
     method: "get",
     url: `https://trackapi.nutritionix.com/v2/search/instant?query=${item}&detailed=true`,
     headers: { "x-app-id": "03a05987", "x-app-key": "ac76ba904fc2089a5f7573a5f74ba3ef", "x-remote-user-id": "0" },
-  })
-    .then((response) => {
-      let foodArr = [];
-      foodArr = response.data.common;
-      //console.log(foodArr)
-      console.log(foodArr[0].full_nutrients);
-      res.render("search", { items: foodArr });
-    })
-})
+  }).then((response) => {
+    let foodArr = [];
+    foodArr = response.data.common;
+    //console.log(foodArr)
+    console.log(foodArr[0].full_nutrients);
+    res.render("search", { items: foodArr });
+  });
+});
 
 // search for food and get its nutrients (free form text) and calculate for 100grams
 
@@ -33,7 +32,6 @@ router.post("/search/nutrients", (req, res, next) => {
   const user = req.session.user;
   const { item } = req.body;
   let food = null;
-  let nutrientsArr = [];
 
   axios({
     method: "post",
