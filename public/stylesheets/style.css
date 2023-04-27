@@ -295,7 +295,7 @@ form button {
 }
 
 .nutrient-facts {
-  font-family: "Arial Black", "Arial Bold";
+  font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
   font-weight: 300;
 }
 
