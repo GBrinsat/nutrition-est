@@ -272,3 +272,54 @@ form button {
   position: absolute;
   right: 25px;
 }
+
+/* Details */
+
+.foodName {
+  text-transform: capitalize;
+}
+
+.nutrients-table {
+  border: 2px solid black;
+  border-collapse: collapse;
+  padding: 5px;
+}
+
+.nutrients-table-bold {
+  border-top: 4px solid black;
+  border-bottom: 4px solid black;
+  border-collapse: collapse;
+  text-align: start;
+  width: 250px;
+  height: 25px;
+}
+
+.nutrient-facts {
+  font-family: "Arial Black", "Arial Bold";
+  font-weight: 300;
+}
+
+.nutrients-table-bold-left {
+  border-top: 4px solid black;
+  border-bottom: 4px solid black;
+  border-left: 1px solid black;
+  border-collapse: collapse;
+  width: 150px;
+  height: 25px;
+}
+
+.nutrient-name {
+  border-top: 1px solid black;
+  border-collapse: collapse;
+  text-align: start;
+  width: 250px;
+  height: 25px;
+}
+
+.nutrient-value {
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-collapse: collapse;
+  width: 150px;
+  height: 25px;
+}

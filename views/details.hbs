@@ -1,61 +1,66 @@
 {{!-- Intro image + search bar --}}
 
-<div class="details-container">
-  <div class="col-12 text-center margin-top">
-    <h5>nutrition information for 100g of:</h5>
-    <h2>{{foodName}}</h2>
-
+<div class="signup-container">
+  <div class="col-10 text-center margin-top mx-auto">
+    <h5>You searched for:</h5>
+    <h2 class="foodName">{{foodName}}</h2>
+    <br>
     <img width="120px" src={{foodPhoto}} alt={{foodName}}>
-    <br />
-      <table class="nutrients-table mx-auto">
-       
+    <br><br><br>
+    <div class="nutrients-table col-sm-10 col-md-6 col-lg-4 mx-auto">
+      <table class="m-2 mx-auto">
         <tr>
-          <td>Energy</td>
-          <td>{{nutrients.[0]}} kcal</td>
+          <th><h2 class="nutrient-facts">Nutrition facts</h2></td>
+        </tr>
+          <tr >
+          <td class="nutrients-table-bold"></td>
+          <td class="nutrients-table-bold-left">per 100g</td>
         </tr>
         <tr>
-          <td>Fat</td>
-          <td>{{nutrients.[1]}} g</td>
+          <td class="nutrient-name ps-2">Energy</td>
+          <td class="nutrient-value">{{nutrients.[0]}} kcal</td>
         </tr>
         <tr>
-          <td>Saturated Fat</td>
-          <td>{{nutrients.[2]}} g</td>
+          <td class="nutrient-name ps-2">Fat</td>
+          <td class="nutrient-value">{{nutrients.[1]}} g</td>
         </tr>
         <tr>
-          <td>Cholesterol</td>
-          <td>{{nutrients.[3]}} mg</td>
+          <td class="nutrient-name ps-2">Saturated Fat</td>
+          <td class="nutrient-value">{{nutrients.[2]}} g</td>
         </tr>
         <tr>
-          <td>Sodium</td>
-          <td>{{nutrients.[4]}} mg</td>
+          <td class="nutrient-name ps-2">Cholesterol</td>
+          <td class="nutrient-value">{{nutrients.[3]}} mg</td>
         </tr>
         <tr>
-          <td>Carbohydrates</td>
-          <td>{{nutrients.[5]}} g</td>
+          <td class="nutrient-name ps-2">Sodium</td>
+          <td class="nutrient-value">{{nutrients.[4]}} mg</td>
         </tr>
         <tr>
-          <td>Sugar</td>
-          <td>{{nutrients.[6]}} g</td>
+          <td class="nutrient-name ps-2">Carbohydrates</td>
+          <td class="nutrient-value">{{nutrients.[5]}} g</td>
         </tr>
         <tr>
-          <td>Fiber</td>
-          <td>{{nutrients.[7]}} g</td>
+          <td class="nutrient-name ps-2">Sugar</td>
+          <td class="nutrient-value">{{nutrients.[6]}} g</td>
+        </tr>
+        <tr>
+          <td class="nutrient-name ps-2">Fiber</td>
+          <td class="nutrient-value">{{nutrients.[7]}} g</td>
         </tr>        
         <tr>
-          <td>Protein</td>
-          <td>{{nutrients.[8]}} g</td>
+          <td class="nutrient-name ps-2">Protein</td>
+          <td class="nutrient-value">{{nutrients.[8]}} g</td>
         </tr> 
          <tr>
-          <td>Potassium</td>
-          <td>{{nutrients.[9]}} mg</td>
+          <td class="nutrient-name ps-2">Potassium</td>
+          <td class="nutrient-value">{{nutrients.[9]}} mg</td>
         </tr> 
-
       </table>
-
+    </div>
   </div>
 </div>
-
-<form action="/profile/add-item" method="POST">
+<form action="/profile/add-item" method="POST" class="m-0 mx-auto">
   <input type="hidden" name="food" value="{{this.foodName}}">
   <div class="d-grid gap-2 col-3 mx-auto">
     <button class="pill-lightgreen rounded-4 mx-auto" type="submit">Add to list</button>
