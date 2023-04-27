@@ -22,8 +22,6 @@ router.get("/search/foodItem", (req, res, next) => {
     .then((response) => {
       let foodArr = [];
       foodArr = response.data.common;
-      //console.log(foodArr)
-      console.log(foodArr[0].full_nutrients);
       res.render("search", { items: foodArr, user });
     })
     .catch(err => {next(err)})
@@ -35,6 +33,11 @@ router.post("/search/nutrients", (req, res, next) => {
   const user = req.session.user;
   const { item } = req.body;
   let food = null;
+  
+  if(user === undefined) {
+    res.redirect("/login")
+  }
+  else {
 
   axios({
     method: "post",
@@ -53,7 +56,6 @@ router.post("/search/nutrients", (req, res, next) => {
       food = response.data.foods;
       foodName = response.data.foods[0].food_name;
       foodPhoto = response.data.foods[0].photo.highres;
-      console.log(foodPhoto);
 
       const calories = [(response.data.foods[0].nf_calories / response.data.foods[0].serving_weight_grams) * 100];
       const nutrients = [
@@ -71,18 +73,16 @@ router.post("/search/nutrients", (req, res, next) => {
 
       roundedNutrients = nutrients.map((element) => element.toFixed(2));
       caloriesAndNutrients = calories.concat(roundedNutrients);
-      console.log(roundedNutrients);
-      // console.log(foodPhoto);
     })
     .then(() => {
       User.findById(user._id).then((response) => {
-        //console.log(food)
         res.render("details", { items: food, user: response, nutrients: caloriesAndNutrients, foodName, foodPhoto });
       });
     })
     .catch((err) => {
       next(err);
     });
+  }
 });
 
 module.exports = router;

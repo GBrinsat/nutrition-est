@@ -4,90 +4,23 @@ const bcrypt = require("bcryptjs");
 const axios = require("axios");
 const User = require("../models/User.model");
 const Food = require("../models/Food.model");
-const { isNotLoggedIn } = require("../middleware/route-guard")
+const List = require("../models/List.model");
+const { isNotLoggedIn } = require("../middleware/route-guard");
 
 // GET profile
 
 router.get("/profile", isNotLoggedIn, (req, res, next) => {
     const userId = req.session.user._id;
 
-    User.findById(userId).then((userFromDB) => {
+    User.findById(userId)
+    .then((userFromDB) => {
       res.render("profile", { user: userFromDB });
     })
   });
 
-// Create new List
-
-router.post("/profile/list", (req, res, next) => {
-  const user = req.session.user;
-  const { listname } = req.body;
-
-  User.findById(user._id)
-    .then((response) => {
-      
-      if(response.list1.length === 0) {
-        response.list1.push(listname)
-      } else if(response.list2.length === 0) {
-        response.list2.push(listname)
-      } else if(response.list3.length === 0) {
-        response.list3.push(listname)
-      }
-      response.save();
-      console.log(response)
-      res.redirect("/profile");
-    })
-    .catch((err) => next(err));
-});
-
-router.get("/profile/list-delete", (req, res, next) => {
-  document.querySelector("");
-});
-
 router.post("/profile/add-item", (req, res, next) => {
 
-  const { food, lists } = req.body;
-  let user = req.session.user;
-
-  console.log(food)
-
-  User.findById(user._id)
-    .then(foundUser => {
-
-      if(lists === foundUser.list1[0]) {
-        console.log("push into List 1")
-        foundUser.list1.push(food)
-        foundUser.save()
-        res.render("profile",  {user : foundUser})
-      } else if(lists === foundUser.list2[0]) {
-        console.log("push into List 2")
-        foundUser.list1.push(food)
-        foundUser.save()
-        res.render("profile",  {user : foundUser})
-      } else if(lists === foundUser.list3[0]) {
-        console.log("push into List 3")
-        foundUser.list1.push(food)
-        foundUser.save()
-        res.render("profile",  {user : foundUser})
-      }
-        
-        
-              /* console.log("found")
-              element.food.push(food)
-              foundUser.save()
-              console.log(foundUser) */
-            
-        })
-      })
-
-  /* const { food, lists } = req.body;
-  let listsArr = []
-  if(typeof lists != "string") {
-    console.log("not string")
-    listsArr = Object.values(lists)
-  } else {
-      listsArr.push(lists)
-    }
-  console.log(listsArr)
+  const { food } = req.body;
   let user = req.session.user;
 
   //get fooditem from name
@@ -99,9 +32,10 @@ router.post("/profile/add-item", (req, res, next) => {
       query: `${food}`,
     },
     headers: {
-      "x-app-id": "03a05987",
-      "x-app-key": "ac76ba904fc2089a5f7573a5f74ba3ef",
+      "x-app-id": process.env.API_ID,
+      "x-app-key": process.env.API_KEY,
       "x-remote-user-id": "0",
+
     },
   })
         .then(response => {
@@ -120,29 +54,17 @@ router.post("/profile/add-item", (req, res, next) => {
                          img: response.data.foods[0].photo.highres })
                           .then(createdFood => {
                             let newFood = createdFood
-                            //console.log(createdFood)
                             User.findById(user._id)
                               .then(foundUser => {
-                                console.log(foundUser.lists)
-                                console.log(lists)
-                                foundUser.lists.forEach(element => {
-                                  for(let i = 0; i < listsArr.length; i++) {
-                                    if(element.listname === listsArr[i]) {
-                                      console.log("found")
-                                      element.food.push(newFood)
-                                      //console.log(element.food)
-                                      //foundUser.save()
-                                    }
-                                  }
-                                })
-                                console.log(foundUser.lists)
+                                foundUser.list.push(newFood)
                                 foundUser.save();
-                                res.render("profile", {user : foundUser});
+                                res.redirect("/profile");
                               })
 
                            
                           })  
-        });*/
+        });
+      })
 
 // Edit profile
 

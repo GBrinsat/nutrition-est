@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const User = require("../models/User.model");
+const List = require("../models/List.model")
 const bcrypt = require("bcryptjs");
 const { isLoggedIn } = require("../middleware/route-guard");
 
@@ -30,17 +31,17 @@ router.post("/auth/signup", (req, res, next) => {
       const salt = bcrypt.genSaltSync();
       const hash = bcrypt.hashSync(password, salt);
 
-      User.create({ username: username, firstname: "", lastname: " ", email: email, password: hash, preferences: [], list1: [], list2: [], list3: [] })
+          User.create({ username: username, firstname: "", lastname: "", email: email, password: hash, preferences: [], list: []})
         .then((createdUser) => {
           res.redirect("/login");
         })
         .catch((err) => {
           next(err);
         });
-    }
-  });
-});
-
+        }
+    });
+  })
+  
 router.get("/login", isLoggedIn, (req, res, next) => {
   const user = req.session.user
   res.render("login", { user });
