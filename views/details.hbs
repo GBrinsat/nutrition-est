@@ -55,12 +55,9 @@
   </div>
 </div>
 
-{{!-- Dropdown for adding food to List --}}
-
-
- <!-- Button trigger modal -->
- <form action="/profile/add-item" method="POST">
-      <input type="hidden" name="food" value="{{this.foodName}}">
-      <button class="foodItem m-0 rounded-4" type="submit">Add to list</button>
-	</form>
-   
+<form action="/profile/add-item" method="POST">
+  <input type="hidden" name="food" value="{{this.foodName}}">
+  <div class="d-grid gap-2 col-3 mx-auto">
+    <button class="pill-lightgreen rounded-4 mx-auto" type="submit">Add to list</button>
+  </div>
+</form>
