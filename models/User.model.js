@@ -42,13 +42,15 @@ const userSchema = new Schema(
       required: false
     }
   ],
-    lists: []
+    list1: [],
+    list2: [],
+    list3: [],
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
     timestamps: true,
   }
-);
+, false);
 
 const User = model("User", userSchema);
 
