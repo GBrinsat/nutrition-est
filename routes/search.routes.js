@@ -11,20 +11,22 @@ router.get("/search", (req, res, next) => {
 // search for specific food names:
 
 router.get("/search/foodItem", (req, res, next) => {
+  const user = req.session.user
   item = req.query.item;
 
-    axios({
-        method:"get",
-        url:`https://trackapi.nutritionix.com/v2/search/instant?query=${item}&detailed=true`,
-        headers: {"x-app-id": "03a05987", "x-app-key": "ac76ba904fc2089a5f7573a5f74ba3ef", "x-remote-user-id": "0"}
+  axios({
+    method: "get",
+    url: `https://trackapi.nutritionix.com/v2/search/instant?query=${item}&detailed=true`,
+    headers: { "x-app-id": "03a05987", "x-app-key": "ac76ba904fc2089a5f7573a5f74ba3ef", "x-remote-user-id": "0" },
+  })
+    .then((response) => {
+      let foodArr = [];
+      foodArr = response.data.common;
+      //console.log(foodArr)
+      console.log(foodArr[0].full_nutrients);
+      res.render("search", { items: foodArr, user });
     })
-        .then(response => {
-            let foodArr = []
-            foodArr = response.data.common
-            //console.log(foodArr)
-            res.render("searchOutput", {items : foodArr})})
-        .catch(err => {next(err)})
-    
+    .catch(err => {next(err)})
 })
 
 // search for food and get its nutrients (free form text) and calculate for 100grams

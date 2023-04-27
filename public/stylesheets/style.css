@@ -1,5 +1,5 @@
 * {
-  /* padding: 10px; */
+  padding: 0.1px;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
   font-weight: 300;
   font-size: 14px;
@@ -9,7 +9,6 @@ a {
   color: #00b7ff;
   text-decoration: none;
   font-size: 1.5em;
-  
 }
 
 .error-message{
@@ -137,19 +136,6 @@ ul li {
   width: 120px;
 }
 
-
-/* Footer */
-
-.footer-image {
-  background-image: url("../images/Footer/Logo.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 150px;
-  height: 40px;
-  margin-top: 5px;
-
-}
-
 /* Header */
 
 .bg-green {
@@ -178,12 +164,13 @@ ul li {
 /* Home */
 
 .home-signup {
-  background-image: url("/images/Backgrounds/bg-home-2.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 100vw;
-  height: 0;
-  padding-bottom: 45%;
+  background: linear-gradient(#DEE2CF, white);
+  padding: 50px 0px;
+}
+
+.toptest {
+  background: linear-gradient(white, #DEE2CF);
+  padding: 50px 0px 50px 0px;
 }
 
 .home-articles {
@@ -207,6 +194,16 @@ ul li {
   padding: 17px;
 }
 
+/* Footer */
+
+.footer-image {
+  background-image: url("../images/Footer/Logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 150px;
+  height: 40px;
+  margin-top: 5px;
+}
 
 /* Sign up and Log in CSS */
 
