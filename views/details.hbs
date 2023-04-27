@@ -3,7 +3,7 @@
 <div class="details-container">
   <div class="col-12 text-center margin-top">
     <h5>nutrition information for:</h5>
-    <h1>{{item.food_name}}</h1>
+    <h1>{{food.[0].food_name}}</h1>
       <table class="nutrients-table mx-auto">
         <tr>
           <th>Nutrient</th>
@@ -81,13 +81,13 @@
             </div>
             <div class="mb-1 col-9 mx-auto">
               <select class="form-control form-height border-success rounded-4 select-sizer" name="lists" multiple>
-                {{#each user.lists}}
-                   <option value="{{listname}}">{{listname}}</option>
-                {{/each}}                  
+                <option value="{{user.list1.[0]}}">{{user.list1.[0]}}</option>
+                <option value="{{user.list2.[0]}}">{{user.list2.[0]}}</option>
+                <option value="{{user.list3.[0]}}">{{user.list3.[0]}}</option>                
               </select>
             </div>
          </div>
-         <input type="hidden" name="item" value="{{item}}">
+          <input type="hidden" name="food" value="{{food.[0].food_name}}">
          <div class="modal-footer">
            <button type="button" class="btn-lightgreen rounded-4" data-bs-dismiss="modal">Close</button>
            <button type="submit" class="btn-green rounded-4">Add to list</button>
@@ -96,26 +96,3 @@
        </div>
      </div>
     </div>
-
-
-
-{{!-- <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Add to list
-  </button>
-  <ul class="dropdown-menu">
-    {{#each user.lists}}
-    
-    <li>
-    <form class="form-item" action="/profile/add-item" method="POST">
-      <button class="dropdown-item bg-white dropdown-button" type="submit">{{listname}}</button>
-    </form>
-    </li>
-
-    <form class="" action="/profile/add-item" method="POST">
-    <input type="hidden" name="item" value="{{listname}}">
-    <a class="dropdown-item bg-white" href="#" onclick="this.parentNode.submit()">{{listname}}</a>
-    </form>
-    {{/each}}
-  </ul>
-</div> --}}

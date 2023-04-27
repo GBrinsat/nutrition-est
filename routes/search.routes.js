@@ -16,7 +16,7 @@ router.get("/search/foodItem", (req, res, next) => {
     axios({
         method:"get",
         url:`https://trackapi.nutritionix.com/v2/search/instant?query=${item}&detailed=true`,
-        headers: {"x-app-id": "f5eefce0", "x-app-key": "4bd59f1a91c918be3c885f59ed157eec", "x-remote-user-id": "0"}
+        headers: {"x-app-id": "03a05987", "x-app-key": "ac76ba904fc2089a5f7573a5f74ba3ef", "x-remote-user-id": "0"}
     })
         .then(response => {
             let foodArr = []
@@ -43,8 +43,8 @@ router.post("/search/nutrients", (req, res, next) => {
       query: `${item}`,
     },
     headers: {
-      "x-app-id": "f5eefce0",
-      "x-app-key": "4bd59f1a91c918be3c885f59ed157eec",
+      "x-app-id": "03a05987",
+      "x-app-key": "ac76ba904fc2089a5f7573a5f74ba3ef",
       "x-remote-user-id": "0",
     },
   })
@@ -72,7 +72,7 @@ const nutrients = [              (response.data.foods[0].nf_calories / response.
             User.findById(user._id) 
                 .then(response => {
                     console.log(food)
-                    res.render("details", {items : food, user: response, nutrients : roundedNutrients})
+                    res.render("details", {food, user : response, nutrients : roundedNutrients})
                 })
         })
         .catch(err => {next(err)})
