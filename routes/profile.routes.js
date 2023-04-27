@@ -12,97 +12,15 @@ const { isNotLoggedIn } = require("../middleware/route-guard");
 router.get("/profile", isNotLoggedIn, (req, res, next) => {
     const userId = req.session.user._id;
 
-    User.findById(userId).then((userFromDB) => {
+    User.findById(userId)
+    .then((userFromDB) => {
       res.render("profile", { user: userFromDB });
     })
   });
 
-// Create new List
-
-router.post("/profile/list", (req, res, next) => {
-  const user = req.session.user;
-  const { listname } = req.body;
-  const newListname = listname
-  let newList 
-
-  List.create({listname : newListname, food : []})
-     .then(response => {
-        newList = response
-          User.findById(user._id)
-           .then(response => {
-              if(response.list1.listname === ""){
-                 response.list1 = newList
-            } else if(response.list2.listname === "") {
-                 response.list2 = newList
-            } else if(response.list3.listname === "") {
-                 response.list3 = newList
-                }
-                response.save();
-                console.log(response)
-                res.redirect("/profile");
-              })
-              .catch((err) => next(err));
-          })
-      })
-
-router.get("/profile/list-delete", (req, res, next) => {
-  document.querySelector("");
-});
-
 router.post("/profile/add-item", (req, res, next) => {
 
-  const { food, lists } = req.body;
-  let user = req.session.user;
-  let listId 
-
-  User.findById(user._id)
-    .then(foundUser => {
-
-      if(lists === foundUser.list1.listname) {
-        console.log("push into List 1")
-        listId = foundUser.list1._id
-        //foundUser.list1.food.push(food)
-      } else if(lists === foundUser.list2.listname) {
-        console.log("push into List 2")
-        listId = foundUser.list2._id
-        console.log(listId)
-        //foundUser.list2.food.push(food)
-      } else if(lists === foundUser.list3.listname) {
-        console.log("push into List 3")
-        listId = foundUser.list3._id
-        //foundUser.list3.food.push(food)
-      }
-
-      List.findById(listId)
-      .then(response => {
-        console.log(response)
-        response.save()
-
-        List.findByIdAndUpdate({listId}, {"$push" : {"food":"tomato"}, function(err, result){
-          if(err){
-            res.send(err)
-          }
-          else{
-            res.redirect("/profile")
-          }
-        }})
-      })
-     
-    })
-  })
-      /* console.log(foundUser)
-      foundUser.save() */
-                  
-
-  /* const { food, lists } = req.body;
-  let listsArr = []
-  if(typeof lists != "string") {
-    console.log("not string")
-    listsArr = Object.values(lists)
-  } else {
-      listsArr.push(lists)
-    }
-  console.log(listsArr)
+  const { food } = req.body;
   let user = req.session.user;
 
   //get fooditem from name
@@ -114,9 +32,10 @@ router.post("/profile/add-item", (req, res, next) => {
       query: `${food}`,
     },
     headers: {
-      "x-app-id": "03a05987",
-      "x-app-key": "ac76ba904fc2089a5f7573a5f74ba3ef",
+      "x-app-id": process.env.API_ID,
+      "x-app-key": process.env.API_KEY,
       "x-remote-user-id": "0",
+
     },
   })
         .then(response => {
@@ -135,29 +54,17 @@ router.post("/profile/add-item", (req, res, next) => {
                          img: response.data.foods[0].photo.highres })
                           .then(createdFood => {
                             let newFood = createdFood
-                            //console.log(createdFood)
                             User.findById(user._id)
                               .then(foundUser => {
-                                console.log(foundUser.lists)
-                                console.log(lists)
-                                foundUser.lists.forEach(element => {
-                                  for(let i = 0; i < listsArr.length; i++) {
-                                    if(element.listname === listsArr[i]) {
-                                      console.log("found")
-                                      element.food.push(newFood)
-                                      //console.log(element.food)
-                                      //foundUser.save()
-                                    }
-                                  }
-                                })
-                                console.log(foundUser.lists)
+                                foundUser.list.push(newFood)
                                 foundUser.save();
-                                res.render("profile", {user : foundUser});
+                                res.redirect("/profile");
                               })
 
                            
                           })  
-        });*/
+        });
+      })
 
 // Edit profile
 

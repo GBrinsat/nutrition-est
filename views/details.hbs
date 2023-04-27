@@ -59,40 +59,8 @@
 
 
  <!-- Button trigger modal -->
-      <button type="button" class="pill-lightgreen rounded-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      Add to list
-      </button>
-	  
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-     <div class="modal-dialog">
-       <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Choose list</h1>
-           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-         </div>
-         <div class="modal-body">
-
-          <form action="/profile/add-item" method="POST">
-            <div class="col-9 mx-auto">
-            {{#if message}}
-              <h3 class="error-message rounded-4">{{message}}</h3>
-            {{/if}}
-            </div>
-            <div class="mb-1 col-9 mx-auto">
-              <select class="form-control form-height border-success rounded-4 select-sizer" name="lists" multiple>
-                <option value="{{user.list1.listname}}">{{user.list1.listname}}</option>
-                <option value="{{user.list2.listname}}">{{user.list2.listname}}</option>
-                <option value="{{user.list3.listname}}">{{user.list3.listname}}</option>                
-              </select>
-            </div>
-         </div>
-          <input type="hidden" name="food" value="{{foodName}}">
-         <div class="modal-footer">
-           <button type="button" class="btn-lightgreen rounded-4" data-bs-dismiss="modal">Close</button>
-           <button type="submit" class="btn-green rounded-4">Add to list</button>
-         </div>
-         </form>
-       </div>
-     </div>
-    </div>
+ <form action="/profile/add-item" method="POST">
+      <input type="hidden" name="food" value="{{this.foodName}}">
+      <button class="foodItem m-0 rounded-4" type="submit">Add to list</button>
+	</form>
+   

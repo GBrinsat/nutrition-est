@@ -17,13 +17,11 @@ router.get("/search/foodItem", (req, res, next) => {
   axios({
     method: "get",
     url: `https://trackapi.nutritionix.com/v2/search/instant?query=${item}&detailed=true`,
-    headers: { "x-app-id": "03a05987", "x-app-key": "ac76ba904fc2089a5f7573a5f74ba3ef", "x-remote-user-id": "0" },
+    headers: { "x-app-id": process.env.API_ID, "x-app-key": process.env.API_KEY, "x-remote-user-id": "0" },
   })
     .then((response) => {
       let foodArr = [];
       foodArr = response.data.common;
-      //console.log(foodArr)
-      console.log(foodArr[0].full_nutrients);
       res.render("search", { items: foodArr, user });
     })
     .catch(err => {next(err)})
@@ -35,6 +33,11 @@ router.post("/search/nutrients", (req, res, next) => {
   const user = req.session.user;
   const { item } = req.body;
   let food = null;
+  
+  if(user === undefined) {
+    res.redirect("/login")
+  }
+  else {
 
   axios({
     method: "post",
@@ -43,8 +46,8 @@ router.post("/search/nutrients", (req, res, next) => {
       query: `${item}`,
     },
     headers: {
-      "x-app-id": "03a05987",
-      "x-app-key": "ac76ba904fc2089a5f7573a5f74ba3ef",
+      "x-app-id": process.env.API_ID,
+      "x-app-key": process.env.API_KEY,
       "x-remote-user-id": "0",
     },
   })
@@ -53,7 +56,6 @@ router.post("/search/nutrients", (req, res, next) => {
       food = response.data.foods;
       foodName = response.data.foods[0].food_name;
       foodPhoto = response.data.foods[0].photo.highres;
-      console.log(foodPhoto);
 
       const calories = [(response.data.foods[0].nf_calories / response.data.foods[0].serving_weight_grams) * 100];
       const nutrients = [
@@ -71,18 +73,16 @@ router.post("/search/nutrients", (req, res, next) => {
 
       roundedNutrients = nutrients.map((element) => element.toFixed(2));
       caloriesAndNutrients = calories.concat(roundedNutrients);
-      console.log(roundedNutrients);
-      // console.log(foodPhoto);
     })
     .then(() => {
       User.findById(user._id).then((response) => {
-        //console.log(food)
         res.render("details", { items: food, user: response, nutrients: caloriesAndNutrients, foodName, foodPhoto });
       });
     })
     .catch((err) => {
       next(err);
     });
+  }
 });
 
 module.exports = router;

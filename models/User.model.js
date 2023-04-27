@@ -42,9 +42,7 @@ const userSchema = new Schema(
       required: false
     }
   ],
-    list1: Object,
-    list2: Object,
-    list3: Object,
+    list: Array,
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`

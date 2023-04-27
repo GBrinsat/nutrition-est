@@ -3,7 +3,10 @@ const { Schema, model } = require("mongoose");
 
 const listSchema = new Schema(
   {
-    listname: String,
+    listname: {
+    type: String,
+    default: "My favourites: "
+    },
     food: Array
   }
 , false);
