@@ -64,9 +64,12 @@
 			</div>
 		</div>
     <!-- Button trigger modal -->
-      <button type="button" class="pill-lightgreen rounded-4" data-bs-toggle="modal" data-bs-target="#profileEditModal">
-      Edit profile
-      </button>
+    <div class="d-inline-flex m-0 p-0">
+      <button type="button" class="pill-lightgreen rounded-4" data-bs-toggle="modal" data-bs-target="#profileEditModal">Edit profile</button>
+      <form action="/profile/delete/{{user._id}}" method="POST" class="m-0 formWidth">
+        <button type="submit" class="pill-lightgreen rounded-4 m-0">Delete profile</button>
+      </form>
+    </div>
 	  </div>
     <!-- Modal -->
     <div class="modal fade" id="profileEditModal" tabindex="-1" aria-labelledby="profileEditModal" aria-hidden="true">

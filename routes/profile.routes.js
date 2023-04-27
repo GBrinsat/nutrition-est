@@ -18,6 +18,19 @@ router.get("/profile", isNotLoggedIn, (req, res, next) => {
     })
   });
 
+// Delete profile
+
+router.post("/profile/delete/:id", (req, res, next) => {
+  User.findByIdAndDelete(req.params.id)
+  .then(() => {
+      req.session.destroy();
+      res.redirect("/")
+  })
+  .catch(err => next(err))
+})
+
+// Add item
+
 router.post("/profile/add-item", (req, res, next) => {
 
   const { food } = req.body;
