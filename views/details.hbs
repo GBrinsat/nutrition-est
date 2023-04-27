@@ -81,13 +81,13 @@
             </div>
             <div class="mb-1 col-9 mx-auto">
               <select class="form-control form-height border-success rounded-4 select-sizer" name="lists" multiple>
-                <option value="{{user.list1.[0]}}">{{user.list1.[0]}}</option>
-                <option value="{{user.list2.[0]}}">{{user.list2.[0]}}</option>
-                <option value="{{user.list3.[0]}}">{{user.list3.[0]}}</option>                
+                <option value="{{user.list1.listname}}">{{user.list1.listname}}</option>
+                <option value="{{user.list2.listname}}">{{user.list2.listname}}</option>
+                <option value="{{user.list3.listname}}">{{user.list3.listname}}</option>                
               </select>
             </div>
          </div>
-          <input type="hidden" name="food" value="{{food.[0].food_name}}">
+          <input type="hidden" name="food" value="{{foodName}}">
          <div class="modal-footer">
            <button type="button" class="btn-lightgreen rounded-4" data-bs-dismiss="modal">Close</button>
            <button type="submit" class="btn-green rounded-4">Add to list</button>

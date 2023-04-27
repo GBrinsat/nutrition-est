@@ -4,7 +4,8 @@ const bcrypt = require("bcryptjs");
 const axios = require("axios");
 const User = require("../models/User.model");
 const Food = require("../models/Food.model");
-const { isNotLoggedIn } = require("../middleware/route-guard")
+const List = require("../models/List.model");
+const { isNotLoggedIn } = require("../middleware/route-guard");
 
 // GET profile
 
@@ -21,23 +22,28 @@ router.get("/profile", isNotLoggedIn, (req, res, next) => {
 router.post("/profile/list", (req, res, next) => {
   const user = req.session.user;
   const { listname } = req.body;
+  const newListname = listname
+  let newList 
 
-  User.findById(user._id)
-    .then((response) => {
-      
-      if(response.list1.length === 0) {
-        response.list1.push(listname)
-      } else if(response.list2.length === 0) {
-        response.list2.push(listname)
-      } else if(response.list3.length === 0) {
-        response.list3.push(listname)
-      }
-      response.save();
-      console.log(response)
-      res.redirect("/profile");
-    })
-    .catch((err) => next(err));
-});
+  List.create({listname : newListname, food : []})
+     .then(response => {
+        newList = response
+          User.findById(user._id)
+           .then(response => {
+              if(response.list1.listname === ""){
+                 response.list1 = newList
+            } else if(response.list2.listname === "") {
+                 response.list2 = newList
+            } else if(response.list3.listname === "") {
+                 response.list3 = newList
+                }
+                response.save();
+                console.log(response)
+                res.redirect("/profile");
+              })
+              .catch((err) => next(err));
+          })
+      })
 
 router.get("/profile/list-delete", (req, res, next) => {
   document.querySelector("");
@@ -47,37 +53,46 @@ router.post("/profile/add-item", (req, res, next) => {
 
   const { food, lists } = req.body;
   let user = req.session.user;
-
-  console.log(food)
+  let listId 
 
   User.findById(user._id)
     .then(foundUser => {
 
-      if(lists === foundUser.list1[0]) {
+      if(lists === foundUser.list1.listname) {
         console.log("push into List 1")
-        foundUser.list1.push(food)
-        foundUser.save()
-        res.render("profile",  {user : foundUser})
-      } else if(lists === foundUser.list2[0]) {
+        listId = foundUser.list1._id
+        //foundUser.list1.food.push(food)
+      } else if(lists === foundUser.list2.listname) {
         console.log("push into List 2")
-        foundUser.list1.push(food)
-        foundUser.save()
-        res.render("profile",  {user : foundUser})
-      } else if(lists === foundUser.list3[0]) {
+        listId = foundUser.list2._id
+        console.log(listId)
+        //foundUser.list2.food.push(food)
+      } else if(lists === foundUser.list3.listname) {
         console.log("push into List 3")
-        foundUser.list1.push(food)
-        foundUser.save()
-        res.render("profile",  {user : foundUser})
+        listId = foundUser.list3._id
+        //foundUser.list3.food.push(food)
       }
-        
-        
-              /* console.log("found")
-              element.food.push(food)
-              foundUser.save()
-              console.log(foundUser) */
-            
-        })
+
+      List.findById(listId)
+      .then(response => {
+        console.log(response)
+        response.save()
+
+        List.findByIdAndUpdate({listId}, {"$push" : {"food":"tomato"}, function(err, result){
+          if(err){
+            res.send(err)
+          }
+          else{
+            res.redirect("/profile")
+          }
+        }})
       })
+     
+    })
+  })
+      /* console.log(foundUser)
+      foundUser.save() */
+                  
 
   /* const { food, lists } = req.body;
   let listsArr = []
