@@ -74,6 +74,9 @@ app.use("/", aboutRoutes);
 const faqRoutes = require("./routes/faq.routes");
 app.use("/", faqRoutes);
 
+const contactRoutes = require("./routes/contact.routes");
+app.use("/", contactRoutes);
+
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 
