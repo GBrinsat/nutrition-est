@@ -58,85 +58,6 @@ form button {
   width: 100%;
   margin-bottom: 20px;
 }
- 
-form button {
-  background: #43a3e6;
-  border: 1px solid #43a3e6;
-  border-radius: 4px;
-  color: #fff;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 14px;
-  padding: 8px 16px;
-  text-decoration: none;
-  text-transform: uppercase;
-  transition: 0.3s ease background;
-  width: 100%;
-}
- 
-form button:hover {
-  background: #fff;
-  color: #43a3e6;
-  transition: 0.3s ease background;
-}
- 
-.error {
-  background: #f02b63;
-  box-sizing: border-box;
-  color: #fff;
-  margin: 20px auto;
-  padding: 20px;
-  width: 100%;
-}
-
-thead, td {
-  text-align: left;
-  padding-right: 15px;
-}
- 
-ul {
-  border-bottom: 2px solid #43a3e6;
-  height: 30px;
-  padding: 1em 0;
-  list-style-type: none;
-}
- 
-ul li {
-  line-height: 20px;
-}
- 
-#to-right {
-  padding: 1em;
-  float: right;
-}
- 
-#to-right span {
-  color: #43a3e6;
-  font-size: 1.5em;
-}
- 
-#form h2 {
-  display: flex;
-  justify-content: center;
-}
- 
-#to-left {
-  float: left;
-}
- 
-#to-left p a {
-  color: #000;
-  font-weight: bold;
-  font-size: 2em;
-}
- 
-#logout-form {
-  display: inline;
-}
- 
-#logout-form button {
-  width: 120px;
-}
 
 /* Header */
 
@@ -255,7 +176,6 @@ ul li {
   background-color: #82B981;
   color: white;
   border: 1px solid #82B981;
-  height: 50px;
   text-transform: none;
 }
 
@@ -266,6 +186,28 @@ ul li {
 }
 
 /* Profile */
+
+.formWidth {
+  width: fit-content;
+}
+
+.btn-green-s {
+  background-color: #048A38;
+  color: white;
+  border: 1px solid #048A38;
+  height: 40px;
+  padding: 0px 10px;
+  text-transform: none;
+}
+
+.btn-lightgreen-s {
+  background-color: #82B981;
+  color: white;
+  border: 1px solid #82B981;
+  height: 40px;
+  padding: 0px 10px;
+  text-transform: none;
+}
 
 .pill-green {
   background-color: white;

@@ -10,7 +10,6 @@
     </div>
     </form>
   </div>
-</div>
 
 {{!-- My nutritionest lists --}}
 
@@ -19,42 +18,20 @@
         <h4>My nutritionest database</h4>
     </div>
 
-    <div class="my-lists ps-2">
-      {{#if user.list1.[0]}}
-        <p>{{user.list1.[0]}}:</p>
-        {{#if user.list1}}
-          {{#each user.list1}}
-            <button type="button" class="pill-green rounded-4">{{this}}</button>
-          {{/each}}
-        {{/if}}
-      {{/if}}
-      <br><br>
-      {{#if user.list2.[0]}}
-        <p>{{user.list2.[0]}}:</p>
-          {{#if user.list2}}
-          {{#each user.list2}}
-            <button type="button" class="pill-green rounded-4">{{this}}</button>
-          {{/each}}
-        {{/if}}
-      {{/if}}
-      <br>
-      {{#if user.list3.[0]}}
-        <p>{{user.list3.[0]}}:</p>
-          {{#if user.list3}}
-          {{#each user.list3}}
-            <button type="button" class="pill-green rounded-4">{{this}}</button>
-          {{/each}}
-        {{/if}}
+    <div class="d-inline-flex flex-wrap">
+      {{#if user.list}}
+        {{#each user.list}}
+          <form action="/search/nutrients" method="POST" class="m-0 p-0 formWidth">
+            <input type="hidden" name="item" value="{{this.food_name}}">
+            <a href="#" onclick="this.parentNode.submit()"></a><button class="pill-green rounded-4" type="submit">{{this.food_name}}</button></a>
+          </form>
+        {{/each}}
+      {{else}}
+        <p>No food added to your database yet.</p>
       {{/if}}
       </div>
-      <form action="/profile/list" method="POST">
-        <div class="col-9 mx-auto">
-          <input type="text" name="listname" placeholder="New List" class="form-control form-height border-success rounded-4">
-          <button type="submit" class="btn-green rounded-4">Create new List</button>
-          </div>
-      </form>
 </section>
-
+<br><br>
 {{!-- My profile info and edit --}}
 
 <section class="my-profile col-lg-4 col-md-6 col-sm-9 ps-2 mx-auto">
@@ -131,11 +108,12 @@
             </div>
          </div>
          <div class="modal-footer">
-           <button type="button" class="btn-lightgreen rounded-4" data-bs-dismiss="modal">Close</button>
-           <button type="submit" class="btn-green rounded-4">Save changes</button>
+           <button type="button" class="btn-lightgreen-s rounded-4" data-bs-dismiss="modal">Close</button>
+           <button type="submit" class="btn-green-s rounded-4">Save changes</button>
          </div>
          </form>
        </div>
      </div>
     </div>
 </section>
+</div>
