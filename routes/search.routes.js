@@ -11,6 +11,7 @@ router.get("/search", (req, res, next) => {
 // search for specific food names:
 
 router.get("/search/foodItem", (req, res, next) => {
+  const user = req.session.user
   item = req.query.item;
 
   axios({
@@ -23,7 +24,7 @@ router.get("/search/foodItem", (req, res, next) => {
       foodArr = response.data.common;
       //console.log(foodArr)
       console.log(foodArr[0].full_nutrients);
-      res.render("search", { items: foodArr });
+      res.render("search", { items: foodArr, user });
     })
 })
 
