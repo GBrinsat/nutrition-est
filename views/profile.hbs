@@ -14,48 +14,45 @@
 
 {{!-- My nutritionest lists --}}
 
-<section class="my-lists col-lg-4 col-md-6 col-sm-9 ps-2 mx-auto">
+<section class="col-lg-4 col-md-6 col-sm-9 ps-2 mx-auto">
     <div>
         <h4>My nutritionest database</h4>
     </div>
 
-
- <p>{{user.list1.[0]}}</p>
- <p>{{user.list2.[0]}}</p>
- <p>{{user.list3.[0]}}</p>
- 
-{{#each user.lists}}
-    <button type="button" class="pill-lightgreen rounded-4" data-bs-toggle="modal" data-bs-target="#listViewModal">{{listname}}</button>
-
-<!-- Modal -->
-    <div class="modal fade" id="listViewModal" tabindex="-1" aria-labelledby="listViewModal" aria-hidden="true">
-     <div class="modal-dialog">
-       <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="listViewModal">List info</h1>
-           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-         </div>
-         <div class="modal-body">
-          {{#each user.lists.food}}
-          <p>food</p>
+    <div class="my-lists ps-2">
+      {{#if user.list1.[0]}}
+        <p>{{user.list1.[0]}}:</p>
+        {{#if user.list1}}
+          {{#each user.list1}}
+            <button type="button" class="pill-green rounded-4">{{this}}</button>
           {{/each}}
-         </div>
-         <div class="modal-footer">
-           <button type="submit" class="btn-lightgreen rounded-4">Delete list</button>
-           <button type="button" class="btn-green rounded-4" data-bs-dismiss="modal">Close</button>
-         </div>
-       </div>
-     </div>
-    </div>
-{{/each}}
-
-<form action="/profile/list" method="POST">
-  <div class="col-9 mx-auto">
-    <input type="text" name="listname" placeholder="New List" class="form-control form-height border-success rounded-4">
-    <button type="submit" class="btn-green rounded-4">Create new List</button>
-    </div>
-</form>
-
+        {{/if}}
+      {{/if}}
+      <br><br>
+      {{#if user.list2.[0]}}
+        <p>{{user.list2.[0]}}:</p>
+          {{#if user.list2}}
+          {{#each user.list2}}
+            <button type="button" class="pill-green rounded-4">{{this}}</button>
+          {{/each}}
+        {{/if}}
+      {{/if}}
+      <br>
+      {{#if user.list3.[0]}}
+        <p>{{user.list3.[0]}}:</p>
+          {{#if user.list3}}
+          {{#each user.list3}}
+            <button type="button" class="pill-green rounded-4">{{this}}</button>
+          {{/each}}
+        {{/if}}
+      {{/if}}
+      </div>
+      <form action="/profile/list" method="POST">
+        <div class="col-9 mx-auto">
+          <input type="text" name="listname" placeholder="New List" class="form-control form-height border-success rounded-4">
+          <button type="submit" class="btn-green rounded-4">Create new List</button>
+          </div>
+      </form>
 </section>
 
 {{!-- My profile info and edit --}}

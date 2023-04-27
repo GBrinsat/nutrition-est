@@ -163,14 +163,14 @@ ul li {
 
 /* Home */
 
+.home-search {
+  background: linear-gradient(white, #DEE2CF);
+  padding: 50px 0px 50px 0px;
+}
+
 .home-signup {
   background: linear-gradient(#DEE2CF, white);
   padding: 50px 0px;
-}
-
-.toptest {
-  background: linear-gradient(white, #DEE2CF);
-  padding: 50px 0px 50px 0px;
 }
 
 .home-articles {
@@ -274,6 +274,7 @@ ul li {
   width: fit-content;
   padding: 5px 10px;
   margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 .pill-lightgreen {
