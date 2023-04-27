@@ -42,16 +42,16 @@ app.use(
 // End of session configuration
 
 // Handlebars Helper
-hbs.registerHelper("math", function(lvalue, operator, rvalue, options) {
+hbs.registerHelper("math", function (lvalue, operator, rvalue, options) {
   lvalue = parseFloat(lvalue);
   rvalue = parseFloat(rvalue);
-      
+
   return {
-      "+": lvalue + rvalue,
-      "-": lvalue - rvalue,
-      "*": lvalue * rvalue,
-      "/": lvalue / rvalue,
-      "%": lvalue % rvalue
+    "+": lvalue + rvalue,
+    "-": lvalue - rvalue,
+    "*": lvalue * rvalue,
+    "/": lvalue / rvalue,
+    "%": lvalue % rvalue,
   }[operator];
 });
 
@@ -59,14 +59,17 @@ hbs.registerHelper("math", function(lvalue, operator, rvalue, options) {
 const indexRoutes = require("./routes/index.routes");
 app.use("/", indexRoutes);
 
-const authRoutes = require("./routes/auth")
-app.use("/", authRoutes)
+const authRoutes = require("./routes/auth");
+app.use("/", authRoutes);
 
-const searchRoutes = require("./routes/search.routes")
-app.use("/", searchRoutes)
+const searchRoutes = require("./routes/search.routes");
+app.use("/", searchRoutes);
 
-const profileRoutes = require("./routes/profile.routes")
-app.use("/", profileRoutes)
+const profileRoutes = require("./routes/profile.routes");
+app.use("/", profileRoutes);
+
+const aboutRoutes = require("./routes/about.routes");
+app.use("/", aboutRoutes);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);

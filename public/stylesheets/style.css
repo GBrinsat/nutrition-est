@@ -9,6 +9,8 @@ a {
   color: #00b7ff;
   text-decoration: none;
   font-size: 1.5em;
+  color: inherit !important;
+  text-decoration: none !important;
 }
 
 .error-message{
