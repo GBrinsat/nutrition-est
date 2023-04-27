@@ -17,7 +17,7 @@ router.get("/search/foodItem", (req, res, next) => {
   axios({
     method: "get",
     url: `https://trackapi.nutritionix.com/v2/search/instant?query=${item}&detailed=true`,
-    headers: { "x-app-id": "03a05987", "x-app-key": "ac76ba904fc2089a5f7573a5f74ba3ef", "x-remote-user-id": "0" },
+    headers: { "x-app-id": process.env.API_ID, "x-app-key": process.env.API_KEY, "x-remote-user-id": "0" },
   })
     .then((response) => {
       let foodArr = [];
@@ -43,8 +43,8 @@ router.post("/search/nutrients", (req, res, next) => {
       query: `${item}`,
     },
     headers: {
-      "x-app-id": "03a05987",
-      "x-app-key": "ac76ba904fc2089a5f7573a5f74ba3ef",
+      "x-app-id": process.env.API_ID,
+      "x-app-key": process.env.API_KEY,
       "x-remote-user-id": "0",
     },
   })
