@@ -176,6 +176,7 @@ form button {
   background-color: #82B981;
   color: white;
   border: 1px solid #82B981;
+  height: 50px;
   text-transform: none;
 }
 
